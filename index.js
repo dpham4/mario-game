@@ -2,7 +2,7 @@ const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 canvas.width = innerWidth;
 canvas.height = innerHeight;
-const gravity = 0.5;
+const gravity = .5;
 
 class Player {
   constructor() {
@@ -18,7 +18,7 @@ class Player {
     this.height = 30;
   }
 
-  draw() {
+  draw() { 
     c.fillStyle = "red";
     c.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
@@ -34,6 +34,15 @@ class Player {
     }
   }
 }
+class Platform {
+  constructor(){
+    this.position = {
+      x: 0,
+      y: 0 
+    }
+    this.width = 200
+  }
+}
 
 const player = new Player();
 const keys = {
@@ -44,6 +53,8 @@ const keys = {
     pressed: false,
   },
 };
+
+
 
 const animate = () => {
   requestAnimationFrame(animate);
@@ -75,7 +86,7 @@ window.addEventListener("keydown", ({ keyCode }) => {
       break;
     case 87:
       // console.log("up")
-      player.velocity.y -= 15;
+      player.velocity.y -= 12;
       break;
   }
 });
